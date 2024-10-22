@@ -4,43 +4,59 @@
 // ¡Valiente! (intermédiaire)
 // ¡Luchador! (difficile)
 
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
-let score = 0;
+class Object {
+    constructor(name, src, points) {
+        this.name = name;
+        this.src = src;
+        this.points = points;
+    }
+}
 
-ctx.fillStyle = "green";
-ctx.fillRect(10, 100, 150, 100);
+const pinata = new Object("pinata", "img/pinata.png", 1);
+const cactus = new Object("cactus", "img/cactus.png", -1);
+const calavera = new Object("pinata", "img/calavera.png", 1);
 
-const pinata = new Image(100, 100);
-pinata.src = "img/pinata.png";
 
-const cactus = new Image(100, 100);
-cactus.src = "img/cactus.png";
+   
 
-const calavera = new Image(100, 100);
-calavera.src = "img/calavera.png";
+
 
 const randomElements = [pinata, cactus, calavera];
 
 function randomImage(array) {
-    const i = Math.floor(Math.random() * array.length);
+    const i = Math.floor((Math.random() * array.length));
+    console.log(i)
     return array[i];
+
+    
     //clear canvas
     //draw image on canvas
 }
 
 function randomCoord() {
-    let x = Math.random() * canvas.width;
-    let y = Math.random() * canvas.height;
-    return [x, y];
+    return ((Math.random() * 100) + "%");
 }
 
-console.log(randomImage(randomElements));
+let img = randomImage(randomElements);
+
+const container = document.getElementById("container");
+img.classList.add("img")
+container.appendChild(img);
+console.log(document.querySelector(".img").style.left = randomCoord());
+document.querySelector(".img").style.top = randomCoord();
+
+
+
+
 
 
 //score
 // document.getElementById('score-board').addEventListener('click', function(){
-//     score=)
+//     if(clickedImg){
+
+//         if('')
+//     }
+//     )}
 
 //time
 

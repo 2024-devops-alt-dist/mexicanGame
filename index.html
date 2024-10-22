@@ -4,16 +4,19 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<h1>PutaClic</h1>
-		<canvas
-			id="canvas"
-			width="100%"
-			height="100%"
-			style="color: yellow"
-		></canvas>
+		<div id="logo"><img src="img/logo.svg" alt="" /></div>
 
+		<div id="start" onclick="launch();"><img src="img/start.svg" alt="" /></div>
+		<div id="container" class="container"></div>
 		<script src="app.js"></script>
+
+		<script>
+			function launch() {
+				document.getElementById('start').style.display = 'none';
+			}
+		</script>
 	</body>
 </html>
