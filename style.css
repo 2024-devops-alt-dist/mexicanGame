@@ -1,0 +1,11 @@
+@font-face {
+	font-family: burrito;
+	src: url(src/burrito.TTF);
+}
+
+h1 {
+	font-family: burrto;
+	color: #f21b1b;
+	text-align: center;
+	font-size: 100px;
+}
