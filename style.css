@@ -3,8 +3,14 @@
 	src: url(src/burrito.TTF);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Kablammo&family=Pixelify+Sans&display=swap');
+
 body {
-	background-color: #e7dcaf;
+	background: url(img/bg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 100vh;
 }
 
 #logo img {
@@ -62,4 +68,19 @@ body {
 	position: absolute;
 	width: 100px;
 	height: 100px;
+}
+
+#score-board {
+font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+	font-family: 'Kablammo', system-ui;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	font-variation-settings: 'MORF' 0;
 }

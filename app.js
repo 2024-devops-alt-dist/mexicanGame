@@ -1,13 +1,14 @@
 // Le jeu propose 3 niveaux de difficulté thématiques :
-
 // ¡Chiquito! (facile)
 // ¡Valiente! (intermédiaire)
 // ¡Luchador! (difficile)
 
+
+let score = 0;
 let intervalId;
 const start = document.getElementById('start')
 const container = document.getElementById("container");
-
+let scoreBoard = document.getElementById("score-board");
 
 class Object {
     constructor(name, src, points) {
@@ -34,11 +35,8 @@ const calavera = new Object("pinata", "img/calavera.png", 5);
 const randomElements = [pinata, cactus, calavera];
 let img = new Image(100, 100);
 let arrayObject = [];
-let difficulty = {time: 120, objectsNumber: 1, delay: 2000};
+let difficulty = {time: 120, objectsNumber: 3, delay: 2000};
 
-// score
-let score = 0;
-let scoreBoard = document.getElementById("score-board");
 
 // function getDifficulty(time, objectsNumber, delay) {
 //     difficulty = new Level(time, objectsNumber, delay);
@@ -47,7 +45,10 @@ let scoreBoard = document.getElementById("score-board");
 function launch() {
     start.addEventListener("click", () => {
         timer(difficulty.time);
-        changeObject(difficulty.delay);
+        for(let i = 0; i < difficulty.objectsNumber; i++) {
+            
+            changeObject(difficulty.delay);
+        }
         start.style.display = 'none';
     })
 }
@@ -71,39 +72,45 @@ function timer(time){
         sec--;
         if (sec < 0) {
             clearInterval(timer);
+            // we need to stop generating images when timer goes to cero
         }
     }, 1000);
 }
 
-
 /**
  * generate object called every 3 seconds
  */
-function changeObject() {
+function changeObject(delay) {
   // check if an interval has already been set up
   if (!intervalId) {
-    intervalId = setInterval(generateObject, 2000);
+    intervalId = setInterval(generateObject, delay);
   }
 }
+
 /**
  * generate a new Object with a new position 
  */
 function generateObject() {
-    imgObject = randomImage(randomElements);
+    let img = new Image(100, 100);
+    let imgObject = randomImage(randomElements);
+    // arrayObject.push(imgObject);
     img.src = imgObject.src;
     img.classList.add("img");
     container.appendChild(img);
     document.querySelector(".img").style.left = randomCoord();
     document.querySelector(".img").style.top = randomCoord();
+    img.addEventListener("click", function() {
+
+        score += imgObject.points;
+
+        if(scoreBoard) {
+            scoreBoard.textContent = "Score: " + score;
+        }
+        container.removeChild(img);
+    })
 }
 
-img.addEventListener("click", function() {
-    score += imgObject.points;
-    if(scoreBoard) {
-        scoreBoard.textContent = "Score: " + score;
-    }
-    container.removeChild(img);
-})
+
 
 
 
