@@ -67,7 +67,7 @@ function randomCoord() {
 function timer(time){
     let sec = time;
     let timer = setInterval(() => {
-        document.getElementById('safeTimerDisplay').innerHTML = '00:' + sec;
+        document.getElementById('safeTimerDisplay').innerHTML = sec;
         sec--;
         if (sec < 0) {
             clearInterval(timer);
